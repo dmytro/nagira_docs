@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: API Namespacing Guideline
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.API_NAMESPACING.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: API Namespacing Guideline</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><p>This is an attempt to standardize on namespacing API routes, for the consistency sake. The rules set here can be changed if there is a god reason for it, otherwise please follow these rules.</p>
+
+<h1>Top level routes</h1>
+
+<p>Top level routes limited to following ones, no new routes will be added.</p>
+
+<ul>
+<li>/_config</li>
+<li>/_objects</li>
+<li>/_status</li>
+<li>/_api</li>
+<li>/_runtime</li>
+<li>/</li>
+</ul>
+
+<h2>Implemented</h2>
+
+<p>&quot;PUT&quot;:</p>
+
+<ul>
+<li>/_status</li>
+<li>/<em>status/:host</em>name</li>
+<li>/<em>status/:host_name/</em>services</li>
+<li>/<em>status/:host_name/_services/:service</em>description</li>
+<li>/<em>status/:host_name/<em>services/:service_description/</em>return</em>code/:return_code/<em>plugin_output/:plugin</em>output</li>
+</ul>
+
+<p>Deprecated to be removed:</p>
+
+<ul>
+<li>/<em>host_status/:host</em>name</li>
+</ul>
+
+<h2>Future additions</h2>
+
+<p>Host and service properties (notifications, checks enabled/disabled) are nested under the host and service endpoints correspondingly.</p>
+
+<h3>Host</h3>
+
+<ul>
+<li>PUT /<em>status/:host_name/</em>active_checks</li>
+<li>PUT /<em>status/:host_name/</em>passive_checks</li>
+<li>PUT /<em>status/:host_name/</em>notifications</li>
+</ul>
+
+<h3>Service</h3>
+
+<ul>
+<li><p>PUT /<em>status/:host_name/_services/:service</em>description/_notifications/</p>
+
+<ul>
+<li>Params
+
+<ul>
+<li>notifications_enabled</li>
+<li>notification_options</li>
+</ul></li>
+</ul></li>
+<li><p>PUT /<em>status/:host_name/_services/:service</em>description/_active_checks</p></li>
+<li><p>PUT /<em>status/:host_name/_services/:service</em>description/<em>passive</em>checks</p></li>
+<li><p>PUT /<em>status/:host_name/_services/:service</em>description/_flap_detection</p></li>
+</ul>
+</div></div>
+
+    <div id="footer">
+  Generated on Fri Nov  6 07:55:32 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
