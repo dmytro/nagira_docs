@@ -61,7 +61,34 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><div id='filecontents'><h1>Short installation procedure</h1>
+    <div id="content"><div id='filecontents'><h1>Run as a Docker container</h1>
+
+<p>Starting from version v0.5.0 -- additionally to the &#39;gem way&#39; -- Nagira
+packaged and published as a Docker container in the public registry on
+Docker Hub. This method does not require installation and configuration,
+however it can be used only on the system with installed and running
+Docker.</p>
+
+<p>Docker repository name: <code>ortym/nagira</code>.</p>
+
+<p>To pull Nagira from public registry and run it, execute command as:</p>
+
+<pre class="code ruby"><code class="ruby">docker run -d -p 4567:4567 -v /etc/nagios3:/etc/nagios3 \
+  -v /var/cache/nagios3:/var/cache/nagios3 \
+  -v /var/lib/nagios3:/var/lib/nagios3 ortym/nagira
+</code></pre>
+
+<p>Directories <code>/etc/nagios3</code>, <code>/var/cache/nagios3</code> and <code>/var/lib/nagios3</code>
+can be different on your OS, so change them accordingly. Provided
+command is tested on Ubuntu and should work on Debian as well.</p>
+
+<p>Dockerfile is included in the Github repo of the project.</p>
+
+<h1>Install from gem</h1>
+
+<p>Starting from version 0.2.2 Nagira is packaged as Ruby Gem with simplified installation procedure as well as run time commands. If you are using Nagira version pre-0.2.2, or are not using it as a gem please refer to <a href="file.INSTALL_pre0.2.2.html" title="older installation instructions">older installation instructions</a>.</p>
+
+<h2>TL;DR</h2>
 
 <p>As root:</p>
 
@@ -73,13 +100,9 @@
 
 <p>More detailed description of installation procedure below.</p>
 
-<h1>Install from gem</h1>
+<h3>Requirements</h3>
 
-<p>Starting from version 0.2.2 Nagira is packaged as Ruby Gem with simplified installation procedure as well as run time commands. If you are using Nagira version pre-0.2.2, or are not using it as a gem please refer to <a href="file.INSTALL_pre0.2.2.html" title="older installation instructions">older installation instructions</a>.</p>
-
-<h2>Requirements</h2>
-
-<p>Nagira written with MRI Ruby 1.9.x and tested with several 1.9 versions, as well as Ruby 2.0.0. Other versions and RUby families could be added in the future. </p>
+<p>Nagira written with MRI Ruby 1.9.x and tested with several 1.9 versions, as well as Ruby 2.0.0. Other versions and RUby families could be added in the future.</p>
 
 <p>Current state of the passing/failing tests can always be seen on <a href="https://travis-ci.org/dmytro/nagira">Travis-CI page for Nagira.</a>.</p>
 
@@ -120,15 +143,15 @@
 
 <h4>Run application</h4>
 
-<p>You can run Nagira service form command line: <code>nagira</code> This starts Nagira application in foreground with log output to <code>STDOUT</code>. </p>
+<p>You can run Nagira service form command line: <code>nagira</code> This starts Nagira application in foreground with log output to <code>STDOUT</code>.</p>
 
 <p>If you intend to run Nagira as system service, read further.</p>
 
 <h3>Create start-up files</h3>
 
-<p>This will put start-up files for Nagira in <code>/etc</code> directory. </p>
+<p>This will put start-up files for Nagira in <code>/etc</code> directory.</p>
 
-<p>Nagira start-up files are tested only on Linux, they will probably work on other UNIX&#39;es with minimal changes. Currently supported distros are RedHat, Debian and their derivatives like CentOS and Ubuntu. </p>
+<p>Nagira start-up files are tested only on Linux, they will probably work on other UNIX&#39;es with minimal changes. Currently supported distros are RedHat, Debian and their derivatives like CentOS and Ubuntu.</p>
 
 <p>Helper script <code>nagira-setup</code> assists in creating and placing config files into correct location.</p>
 
@@ -155,8 +178,8 @@
 <p>For single step configuration run <code>nagira-setup config:all</code>. This task combines following ones:</p>
 
 <ul>
-<li><strong>config:config</strong> -- Create configuration for Nagira in /etc. This will copy <code>init.d</code> start up file and defaults file into proper locations.<br></li>
-<li><strong>config:chkconfig</strong> -- Enable Nagira service to start on system boot<br></li>
+<li><strong>config:config</strong> -- Create configuration for Nagira in /etc. This will copy <code>init.d</code> start up file and defaults file into proper locations.</li>
+<li><strong>config:chkconfig</strong> -- Enable Nagira service to start on system boot</li>
 <li><strong>config:start</strong> -- Starts Nagira API service</li>
 </ul>
 
@@ -181,7 +204,7 @@
 </div></div>
 
     <div id="footer">
-  Generated on Fri Nov  6 07:55:32 2015 by
+  Generated on Mon Nov  9 02:30:09 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.0.0).
 </div>
